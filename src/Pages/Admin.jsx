@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import useFetch from "../hooks/useFetch";
+import moment from "moment";
 import axios from "axios";
 export default function Admin() {
     const [username, setUsername] = useState('');
@@ -63,6 +63,7 @@ export default function Admin() {
                                     <br/>Котактное лицо: {request.description}
                                     <br/>Описание проблемы: {request.description}
                                     <br/>Адрес заявителя: {request.address}
+                                    <br/>Дата создания заявки: {moment(request.createdAt).utc().format('YYYY-MM-DD')}
 
                                     {!request.status && (
                                         <button className="button_status" onClick={() => handleStatusChange(request._id)}>
